@@ -4,6 +4,8 @@ using Exiled.Permissions.Extensions;
 
 namespace EveryoneVsScps
 {
+    [CommandHandler(typeof(RemoteAdminCommandHandler))]
+    [CommandHandler(typeof(GameConsoleCommandHandler))]
     public class StartCommand : ICommand
     {
         public string Command { get; } = "StartEVS";
