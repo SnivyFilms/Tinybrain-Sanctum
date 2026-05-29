@@ -35,8 +35,7 @@ namespace EveryoneVsScps
             if (ev.Player == null || ev.Target == null || ev.Target == ev.Player)
                 return;
 
-            if ((Plugin.Instance.Config.AlwaysActive || Plugin.Instance.IsActiveForRound) 
-                && ev.Target.Role.Side != Side.Scp)
+            if (Plugin.Instance.Config.AlwaysActive || Plugin.Instance.IsActiveForRound)
                 ev.IsAllowed = false;
         }
     }
