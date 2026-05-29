@@ -11,7 +11,7 @@ namespace EveryoneVsScps
         public override string Name { get; } = "Custom Lights";
         public override string Prefix { get; } = "CustomLights";
         public override string Author { get; } = "Vicious Vikki";
-        public override Version Version { get; } = new Version(1, 0, 1);
+        public override Version Version { get; } = new Version(1, 0, 3);
         public override Version RequiredExiledVersion { get; } = new Version(9, 13, 3);
         public EventHandler EventHandler;
         public bool IsActiveForRound = false;
@@ -20,6 +20,7 @@ namespace EveryoneVsScps
             Instance = this;
             EventHandler = new EventHandler(this);
             Player.Hurting += EventHandler.OnHurting;
+            Player.Handcuffing += EventHandler.OnHandcuffing;
             Server.RoundStarted += EventHandler.OnRoundStarted;
             base.OnEnabled();
         }
@@ -27,6 +28,7 @@ namespace EveryoneVsScps
         public override void OnDisabled()
         {
             Player.Hurting -= EventHandler.OnHurting;
+            Player.Handcuffing -= EventHandler.OnHandcuffing;
             Server.RoundStarted -= EventHandler.OnRoundStarted;
             IsActiveForRound = false;
             EventHandler = null;
