@@ -1,9 +1,9 @@
 using System;
 using Exiled.API.Features;
+using Player = Exiled.Events.Handlers.Player;
 using Server = Exiled.Events.Handlers.Server;
-using Warhead = Exiled.Events.Handlers.Warhead;
 
-namespace CustomLights
+namespace EveryoneVsScps
 {
     public class Plugin : Plugin<Config>
     {
@@ -11,25 +11,24 @@ namespace CustomLights
         public override string Name { get; } = "Custom Lights";
         public override string Prefix { get; } = "CustomLights";
         public override string Author { get; } = "Vicious Vikki";
-        public override Version Version { get; } = new Version(1, 0, 2);
+        public override Version Version { get; } = new Version(1, 0, 0);
         public override Version RequiredExiledVersion { get; } = new Version(9, 13, 3);
         public EventHandler EventHandler;
-        
+        public bool IsActiveForRound = false;
         public override void OnEnabled()
         {
             Instance = this;
             EventHandler = new EventHandler(this);
+            Player.Hurting += EventHandler.OnHurting;
             Server.RoundStarted += EventHandler.OnRoundStarted;
-            Warhead.Starting += EventHandler.OnWarheadStart;
-            Warhead.Stopping += EventHandler.OnWarheadStop;
             base.OnEnabled();
         }
 
         public override void OnDisabled()
         {
+            Player.Hurting -= EventHandler.OnHurting;
             Server.RoundStarted -= EventHandler.OnRoundStarted;
-            Warhead.Starting -= EventHandler.OnWarheadStart;
-            Warhead.Stopping -= EventHandler.OnWarheadStop;
+            IsActiveForRound = false;
             EventHandler = null;
             Instance = null;
             base.OnDisabled();

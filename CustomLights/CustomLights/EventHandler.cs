@@ -36,7 +36,7 @@ namespace CustomLights
                 }
                 foreach (var room in matchingRooms)
                 {
-                    room.Color = new Color(roomLight.R / 255f, roomLight.G / 255f, roomLight.B / 255f, roomLight.Intensity);
+                    room.Color = new Color(roomLight.R, roomLight.G, roomLight.B, roomLight.Intensity);
                 }
 
                 Log.Debug($"Set lights in {matchingRooms.Count} rooms of type '{roomLight.RoomName}' to RGB({roomLight.R}, {roomLight.G}, {roomLight.B}) with intensity {roomLight.Intensity}.");

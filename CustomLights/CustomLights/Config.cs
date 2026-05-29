@@ -18,7 +18,7 @@ namespace CustomLights
                 R = 255,
                 G = 255,
                 B = 255,
-                Intensity = 1f
+                Intensity = 255
             },
         };
         public Color32 NukeLightColor { get; set; } = new Color32(255, 0, 0, 1);
@@ -38,7 +38,7 @@ namespace CustomLights
         [Description("Blue value (0-255).")]
         public byte B { get; set; }
 
-        [Description("Light intensity multiplier (0-1).")]
-        public float Intensity { get; set; }
+        [Description("Light intensity multiplier (0-255).")]
+        public byte Intensity { get; set; }
     }
 }
