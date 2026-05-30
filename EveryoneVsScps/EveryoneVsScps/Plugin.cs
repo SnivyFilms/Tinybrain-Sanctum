@@ -22,6 +22,7 @@ namespace EveryoneVsScps
             Player.Hurting += EventHandler.OnHurting;
             Player.Handcuffing += EventHandler.OnHandcuffing;
             Server.RoundStarted += EventHandler.OnRoundStarted;
+            Server.EndingRound += EventHandler.OnRoundEnding;
             base.OnEnabled();
         }
 
@@ -30,6 +31,7 @@ namespace EveryoneVsScps
             Player.Hurting -= EventHandler.OnHurting;
             Player.Handcuffing -= EventHandler.OnHandcuffing;
             Server.RoundStarted -= EventHandler.OnRoundStarted;
+            Server.EndingRound -= EventHandler.OnRoundEnding;
             IsActiveForRound = false;
             EventHandler = null;
             Instance = null;
