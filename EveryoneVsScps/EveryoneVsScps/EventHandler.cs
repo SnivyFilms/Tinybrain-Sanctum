@@ -66,7 +66,6 @@ namespace EveryoneVsScps
             if (allNonScps)
             {
                 ev.IsAllowed = true;
-                
                 ev.LeadingTeam = LeadingTeam.FacilityForces;
                 Round.EndRound();
                 return;
